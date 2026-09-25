@@ -41,19 +41,32 @@ class Board
         end     
     end    
     num = 89 ##here num will be the value  of player move we going to senf through game class at the object of board..t
+    char = 'X' ## here char will be the value of "X" or 'O' depending on the player 
     def inappropriate_move(i,j)
         if (num<1 || num >= 9)
-          return true
+            return true
         end
         
         if(@board[i][j].is_a?(String))
-          return true
+            return true
         end
-    end
 
+        return false
+    end
     
-    
-         
+    def winning_logic()
+       for a in 0...3
+            if (@board[a][0] && @board[a][1] && @board[a][2]) == char || (@board[0][a] && @board[1][a] && @board[2][a]) == char ##staright moves
+                return true
+            end
+       end 
+        if (@board[0][0] && @board[1][1] && @board[2][2]) == char || (@board[0][2] && @board[1][1]  && @board[2][0] ) == char ##diagnols
+                    return true  
+        end             
+
+       
+        
+    end
 end
 
 
