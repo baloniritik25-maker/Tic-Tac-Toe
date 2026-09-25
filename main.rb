@@ -63,13 +63,17 @@ class Board
         if (@board[0][0] && @board[1][1] && @board[2][2]) == char || (@board[0][2] && @board[1][1]  && @board[2][0] ) == char ##diagnols
                     return true  
         end             
-
-       
-        
     end
-end
+
+    def tie()
+      return @board.all?{|x,y| y.is_a?(String) }
+    end
 
 
+    def make_move()
+        @board[i][j] = char
+    end
+end 
 class Game
   def initialize
     @board =  Board.new()
